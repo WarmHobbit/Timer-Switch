@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Dashboard</title>
+	</head>
+	<body>
+		<div class="container" id="container">
+			<h1>Timer Controller</h1>
+			<div class="dial">
+				<h3>Set Timer Duration</h3>
+				<span>
+					<select name="duration" id="duration" class="big"></select>
+					<select name="unit" id="unit" class="big">
+						<option value="3600000">hr</option>
+						<option value="60000">min</option>
+					</select>
+					<button type="submit" id="btn" class="big">Go!</button>
+				</span>
+			</div>
+			<h3 id="confirmation" style="color: red"></h3>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
