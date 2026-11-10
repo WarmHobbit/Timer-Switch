@@ -49,6 +49,9 @@ void setup() {
   server.serveStatic("/script.js", LittleFS, "/script.js");
 
   // Creating Endpoints
+
+
+  // NORMAL CONTROL
   server.on("/control", HTTP_POST, []() {  //[]() are cpp anonymous function declarations
     String body = server.arg("plain");
     JsonDocument doc;
@@ -73,6 +76,8 @@ void setup() {
     Serial.println("Timer Modified");
   });
 
+
+  // STATUS REPORTING
   server.on("/status", HTTP_GET, []() {
     JsonDocument doc;
     doc["rxdDuration"] = duration;
@@ -80,6 +85,13 @@ void setup() {
     String rxdData;
     serializeJson(doc, rxdData);
     server.send(200, "application/json", rxdData);
+  });
+
+
+  // EMERGENCY STOP
+  server.on("/reset", HTTP_POST, []() {
+    server.send(200, "text/plain", "Restarting");
+    ESP.restart();
   });
 
   server.begin();

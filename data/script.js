@@ -46,4 +46,10 @@ document.getElementById("btn").addEventListener("click", (e) => {
 	}
 
 	setInterval(getStatus, 1000);
+
+	// Emergency Stop
+	stopBtn = document.getElementById("stop");
+	stopBtn.addEventListener("click", () => {
+		fetch("/reset", { method: "POST" });
+	});
 });
